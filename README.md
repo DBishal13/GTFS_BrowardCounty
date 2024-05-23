@@ -168,25 +168,7 @@ INSERT INTO pickup_dropoff_types (type_id, description) VALUES
 In this script, several indexes were created on different tables to enhance query performance and optimize data retrieval. For example, in the `calendar` table, an index named `calendar_service_id` was created on the `service_id` column, which likely serves as a primary identifier for service schedules. This index speeds up queries involving filtering or joining based on `service_id`, improving the efficiency of operations related to service schedules. Similarly, indexes such as `calendar_dates_dateidx`, `shapes_shape_key`, `shape_geoms_key`, and `trips_trip_id` are created on relevant columns in their respective tables to facilitate faster data access and retrieval. Additionally, indexes like `arr_time_index` and `dep_time_index` were created on the `arrival_time` and `departure_time` columns in the `stop_times` table to optimize queries involving sorting or filtering based on these time attributes. These indexes contribute to better database performance by reducing query execution times and enhancing the overall efficiency of data operations.
 
 ## 2.3 Populating the tables with CSV files
-I organized the data by creating individual tables for each CSV file. Additionally, I established a table called "shape_geoms" to consolidate all segments forming a route into a unified geometry. Moreover, I set up auxiliary tables named "exception_types," "location_types," and "pickup_dropoff_types" to accommodate acceptable values for certain columns found in the CSV files. To import the CSV files into their respective tables, the following steps can be taken. Because of permission denied error during the process, the \copy command within the psql shell was utilized as an alternative to the COPY command. As follows:
-
-\copy calendar(service_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday, start_date, end_date) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/calendar.txt' DELIMITER ',' CSV HEADER;
-
-\copy calendar_dates(service_id, date, exception_type) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/calendar_dates.txt' DELIMITER ',' CSV HEADER;
-
-\copy stop_times(trip_id, arrival_time, departure_time, stop_id, stop_sequence, pickup_type, drop_off_type) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/stop_times.txt' DELIMITER ',' CSV HEADER;
-
-\copy trips(route_id, service_id, trip_id, trip_headsign, direction_id, block_id, shape_id) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/trips.txt' DELIMITER ',' CSV HEADER;
-
-\copy agency(agency_id, agency_name, agency_url, agency_timezone, agency_lang, agency_phone) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/agency.txt' DELIMITER ',' CSV HEADER;
-
-\copy route_types(route_type, description) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/route_types.txt' DELIMITER ',' CSV HEADER;
-
-\copy routes(route_id, route_short_name, route_long_name, route_desc, route_type, route_url, route_color, route_text_color) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/routes.txt' DELIMITER ',' CSV HEADER;
-
-\copy shapes(shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/shapes.txt' DELIMITER ',' CSV HEADER;
-
-\copy stops(stop_id, stop_code, stop_name, stop_desc, stop_lat, stop_lon, zone_id, stop_url, location_type, parent_station) FROM 'C:/Users/bdhungana2023/Downloads/gtfs/stops.txt' DELIMITER ',' CSV HEADER;
+I organized the data by creating individual tables for each CSV file. Additionally, I established a table called "shape_geoms" to consolidate all segments forming a route into a unified geometry. Moreover, I set up auxiliary tables named "exception_types," "location_types," and "pickup_dropoff_types" to accommodate acceptable values for certain columns found in the CSV files. To import the CSV files into their respective tables, the following steps can be taken. Because of permission denied error during the process, the \copy command within the psql shell was utilized as an alternative to the COPY command.
 
 ## 2.4 Create Geometries
 I utilized PostGIS, an extension of PostgreSQL for handling spatial data, to create geometries for routes and stops. The `shape_geoms` table was populated with line string geometries representing routes. These geometries were generated using latitude and longitude coordinates stored in the `shapes` table. The `stops` table was updated with point geometries, each corresponding to a stop location. The `ST_MakeLine` function constructs linestring geometries by connecting points, while `ST_SetSRID` sets the spatial reference system for point geometries. This process ensures that spatial data is accurately represented and can be effectively queried and analyzed.
