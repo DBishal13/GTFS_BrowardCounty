@@ -165,7 +165,7 @@ INSERT INTO pickup_dropoff_types (type_id, description) VALUES
 (1,'Not available'),
 (2,'Phone arrangement only'),
 (3,'Driver arrangement only');
-
+```
 In this script, several indexes were created on different tables to enhance query performance and optimize data retrieval. For example, in the `calendar` table, an index named `calendar_service_id` was created on the `service_id` column, which likely serves as a primary identifier for service schedules. This index speeds up queries involving filtering or joining based on `service_id`, improving the efficiency of operations related to service schedules. Similarly, indexes such as `calendar_dates_dateidx`, `shapes_shape_key`, `shape_geoms_key`, and `trips_trip_id` are created on relevant columns in their respective tables to facilitate faster data access and retrieval. Additionally, indexes like `arr_time_index` and `dep_time_index` were created on the `arrival_time` and `departure_time` columns in the `stop_times` table to optimize queries involving sorting or filtering based on these time attributes. These indexes contribute to better database performance by reducing query execution times and enhancing the overall efficiency of data operations.
 
 ## 2.3 Populating the tables with CSV files
@@ -179,5 +179,6 @@ I created two views: "stops_view" and "shape_geoms_view". These views are design
 
 ## 3. Results
 The final map showcasing the stops and routes is depicted in the figure below. This visualization offers crucial insights into the transportation network, enabling a comprehensive understanding of the infrastructure and its operations. Understanding this data is paramount for effective traffic management and urban planning. By analyzing the distribution of stops and routes, authorities can optimize public transportation systems, alleviate congestion, and enhance overall mobility within the city. Moreover, it empowers the public to plan their trips efficiently, choose the best routes, and make informed decisions about their daily commute.
+[![Final Map](https://github.com/DBishal13/GTFS_BrowardCounty/blob/main/FinalMap.png)](https://github.com/DBishal13/GTFS_BrowardCounty/blob/main/FinalMap.png)
 
 Additionally, this project serves as a foundation for further analysis and enhancements. The tables provided a solid framework for conducting in-depth studies such as demand forecasting, service optimization, and route efficiency analysis. By leveraging this data, future projects can explore advanced analytics techniques to unlock valuable insights and further improve transportation systems.
