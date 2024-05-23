@@ -178,7 +178,6 @@ I created two views: "stops_view" and "shape_geoms_view". These views are design
 
 ## 3. Results
 The final map showcasing the stops and routes is depicted in the figure below. This visualization offers crucial insights into the transportation network, enabling a comprehensive understanding of the infrastructure and its operations. Understanding this data is paramount for effective traffic management and urban planning. By analyzing the distribution of stops and routes, authorities can optimize public transportation systems, alleviate congestion, and enhance overall mobility within the city. Moreover, it empowers the public to plan their trips efficiently, choose the best routes, and make informed decisions about their daily commute.
-
-Figure: Final map illustrating stops and routes.
-Additionally, this project serves as a foundation for further analysis and enhancements. The tables provided a solid framework for conducting in-depth studies such as demand forecasting, service optimization, and route efficiency analysis. By leveraging this data, future projects can explore advanced analytics techniques to unlock valuable insights and further improve transportation systems.
 [![Final Map](https://github.com/DBishal13/GTFS_BrowardCounty/blob/main/FinalMap.png)](https://github.com/DBishal13/GTFS_BrowardCounty/blob/main/FinalMap.png)
+
+Additionally, this project serves as a foundation for further analysis and enhancements. The tables provided a solid framework for conducting in-depth studies such as demand forecasting, service optimization, and route efficiency analysis. By leveraging this data, future projects can explore advanced analytics techniques to unlock valuable insights and further improve transportation systems.
